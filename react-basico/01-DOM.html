@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+     
+     // Criando um novo elemento <p> via JavaScript
+        let parag = document.createElement('p')
+        parag.textContent = 'Este parágrafo foi criado com JavaScript'
+
+
+        // Capturar a div root
+        const root = document.getElementById('root')
+
+        // Acresenta o parágrafo a lista de filhos da div root
+        root.appendChild(parag)
+
+        // Criando uma nova div
+        const novaDiv = document.createElement('div')
+
+        novaDiv.textContent = 'DIV criada com JavaScript'
+        novaDiv.style.border = '3px dotted green'
+        novaDiv.style.backgroundColor = 'Limegreen'
+        novaDiv.style.padding = '10px'
+        novaDiv.style.marginTop = '20px'
+        novaDiv.style.textAlign = 'center'
+        novaDiv.id = 'div-verde'
+
+        root.appendChild(novaDiv)
+    </script>
+
+</body>
+</html>
