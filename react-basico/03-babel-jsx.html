@@ -25,28 +25,24 @@
 <body>
 
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <div id="output"></div>
-<!-- Load Babel -->
-<!-- v6 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-<!-- Your custom script here -->
-<script type="text/babel">
-const getMessage = () => "Hello World";
-document.getElementById('output').innerHTML = getMessage();
-</script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <div id="root"></div>
 
   <script type = "text/babel">
 
-    // divt criada com REACT 'cru'
+    // div1 criada com REACT 'cru'
+    const div1 = React.createElement('div', 
+    {className: 'formata', children: 'Div criada com React "cru"'})
+
+    //div2, criada com JSX e processada pelo Babel
 
     const div2 = < div className= "formata">Div criada com JSX+Babel</div>
 
     const container = React.createElement('div', null, [div1, div2])
 
-    const root = ReactDOM.createElement(document.getElementByld('root'))
+    const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(container)
 
 </script>

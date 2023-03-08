@@ -16,21 +16,23 @@
   <script>
     /*
     No react, os atributos de um elemento HTML são chamados PROPS e são definidos por meio de um objeto JavaScript
-    */$
+    */
     const props = {
         id: 'div-react',
         children: 'DIV criada com REACT', //"Recheio" do elemento
-        style: {border: '2px solid blue', backgroundColor: 'pink'}
+        style: { border: '2px solid blue', backgroundColor: 'pink'}
     }
 
     // Usando React para criar um elemento com os pronps anteriormente definidos
     const novaDiv = React.createElement('div', props)
 
     //Criando um botão definindo as props na propria chamada da função
-    // React.creatElement
+    // React.createElement
     // const botao = React.creatElement('button', {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'}, children: 'Clique aqui', onClick: () => alert('OLa')})
 
-    const botao = React.createElement('button', {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'}, children: 'Clique aqui', onClick: () => alert('OLa')}, 'Clique aqui')
+    const botao = React.createElement('button', 
+    {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'},
+     children: 'Clique aqui', onClick: () => alert('OLa')}, 'Clique aqui')
     // children pode ser passada como terceiro parâmetro
 
     //Criando um elemento de forma rápida 
