@@ -28,19 +28,18 @@
 
     //Criando um botão definindo as props na propria chamada da função
     // React.createElement
-    // const botao = React.creatElement('button', {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'}, children: 'Clique aqui', onClick: () => alert('OLa')})
+    // const botao = React.creatElement('button', {
+    //id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'}, 
+    //children: 'Clique aqui', onClick: () => alert('OLa')})
 
-    const botao = React.createElement('button', 
-    {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'},
+    const botao = React.createElement('button', {id: 'botao1', style: {color: 'red', backgroundColor: 'yellow'},
      children: 'Clique aqui', onClick: () => alert('OLa')}, 'Clique aqui')
     // children pode ser passada como terceiro parâmetro
 
     //Criando um elemento de forma rápida 
     const parag = React.createElement('p', null, 'Paragrafo sem frescura')
 
-    const container = React.createElement('div', {id: 'container'} [
-        novaDiv, botao, parag
-    ])
+    const container = React.createElement('div', {id: 'container'}, [novaDiv, botao, parag])
 
     //Encaixando o novo elemento na estrutura da página
     const root = ReactDOM.createRoot(document.getElementById('root'))
