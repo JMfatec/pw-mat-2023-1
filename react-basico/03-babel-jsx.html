@@ -40,9 +40,31 @@
 
     const div2 = < div className= "formata">Div criada com JSX+Babel</div>
 
-    const container = React.createElement('div', null, [div1, div2])
+    const classeCss = "formata"
+    const conteudo = 'Div criada com JSX+Babel e variáveis interpoladas'
 
-    const root = ReactDOM.createRoot(document.getElementById('root'))
+    //Para exibir o conteudo de variáveis dentro do JSX, usamos {}
+    const div3 = <div className={classeCss}>{conteudo}</div>
+
+    //Criando um objeto de props
+    const props = {
+        className: 'formata',
+        children: 'Div criada com JSX+Babel e espalhamento de props'
+    }
+
+    const div4 = <div {...props} />    //<div {...props}></div>
+
+    //const container = React.createElement('div', null, [div1, div2, div3, div4])
+ 
+    //Container usando JSX
+    const container =
+     <div>
+        {div1}
+        {div2}
+        {div3}
+        {div4}
+     </div>   
+        const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(container)
 
 </script>
