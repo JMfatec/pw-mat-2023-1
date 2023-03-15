@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .sauda {
+        .msg {
             
             background-color: khaki;
             border-radius: 4px;
@@ -27,11 +27,11 @@
 
   <script type="text/babel">
 
-    //Função de componentes: props genericas
+    //Função de componentes: props genéricas
     const Mensagem = props => <div className = "msg" {...props} />
 
     //Função de componente : props personalizadas
-    const Aviso = ({id, children}) => <div className="msg" id={id} children={ children} />
+    const Aviso = ({id, children}) => <div className="msg" id={id} children={children} />
 
     const container =
     <>
