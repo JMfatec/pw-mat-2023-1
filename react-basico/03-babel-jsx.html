@@ -34,14 +34,14 @@
 
     // div1 criada com REACT 'cru'
     const div1 = React.createElement('div', 
-    {className: 'formata', children: 'Div criada com React "cru"'})
+    {className: 'formata', children: 'Div1 criada com React "cru"'})
 
     //div2, criada com JSX e processada pelo Babel
 
     const div2 = < div className= "formata">Div criada com JSX+Babel</div>
 
     const classeCss = "formata"
-    const conteudo = 'Div criada com JSX+Babel e variáveis interpoladas'
+    const conteudo = 'Div2 criada com JSX+Babel e variáveis interpoladas'
 
     //Para exibir o conteudo de variáveis dentro do JSX, usamos {}
     const div3 = <div className={classeCss}>{conteudo}</div>
@@ -49,7 +49,7 @@
     //Criando um objeto de props
     const props = {
         className: 'formata',
-        children: 'Div criada com JSX+Babel e espalhamento de props'
+        children: 'Div3 criada com JSX+Babel e espalhamento de props'
     }
 
     const div4 = <div {...props} />    //<div {...props}></div>

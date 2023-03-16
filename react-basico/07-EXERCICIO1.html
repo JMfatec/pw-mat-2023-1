@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .texto {
+            font-family: 'Courier New', monospace;
+            color: blue;
+            background-color:  white;
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        .texto1 {
+            font-family: 'Courier New', monospace;
+            color: red;
+            background-color: white;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    /*
+      EXERCÍCIO DE FIXAÇÃO n°1
+
+      1) Crie dois estilos CSS, um que coloque o texto na cor azul e outro que coloque o texto na cor vermelho
+      2) Declare uma função de componente que receba as seguintes props personalisadas:nome ,sobrenome, dia, mês e ano.
+      3) na função de componente, coloque um fragment e, dentro dele, dois paragrafos: no primeiro, deve ser aplicada a classe
+         que deixa a cor do texto em uma cor e, na outra, a classe que deixa a cor na outra cor
+      4) No primeiro parágrafo, deve ser exibido o nome completo, composto por nome e sobrenome.
+      5) No segundo parágrafo, deve ser exibida a data de nascimento, composta pelo dia, pelo mês e pelo ano, separados por /.
+      6) No componente, crie ainda, uma div.Dentro dela, deve ser exibida a idade que a pessoa terá no final do ano, calculada
+         por meio de um cálculo simples (2023 menos o ano de nascimento informado).
+      7) Faça os comentários que julgar necessários no código.
+      
+      Essa atividade contará como nota de Participação e Assiduidade (PA)
+    */  
+
+    const Soma = ({num1, num2, ...props}) => 
+      <div className="soma" {...props}>
+        No final do ano ela terá: { num2 - num1}
+      </div>
+
+    // Componente que recebe somente props genéricos
+    
+    const div1 = React.createElement('div', 
+    {className: 'texto', children: 'Nome Jociclei Sobrenome: Marilda'})
+
+    const div2 = React.createElement('div', 
+    {className: 'texto1', children: 'Ano de Nascimento: 1995 \n Nome mês: julho \n No dia: 23'})
+
+
+    const container =
+    <>
+      <Soma id="soma1" num1={1995} title="Ano de nascimento" num2={2023} />
+      {div1}
+      {div2}
+    </>
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    
+    root.render(container)
+
+  </script> 
+</body>
+</html>

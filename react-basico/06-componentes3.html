@@ -34,9 +34,9 @@
     //Componentes que exibe a soma de dois números
     //Aqui temos um caso que props personalizados e genéricos são usados ao mesmo tempo
     const Soma = ({num1, num2, ...props}) => 
-    <div className="soma" {...props}>
+      <div className="soma" {...props}>
         A soma de {num1} e {num2} é { num1 + num2}
-    </div>
+      </div>
 
     // Componente que recebe somente props genéricos
     const ParagCentro = props => <p className="centro" { ...props} />
