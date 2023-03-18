@@ -7,18 +7,18 @@
     <title>Document</title>
     <style>
         .texto {
-            font-family: 'Courier New', monospace;
+            font-family: 'Courier New';
+            font-size: large;
             color: blue;
-            background-color:  white;
             text-align: left;
             margin-bottom: 15px;
         }
         .texto1 {
-            font-family: 'Courier New', monospace;
+            font-family: 'Courier New';
+            font-size: large;
             color: red;
-            background-color: white;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
     </style>
 </head>
@@ -51,20 +51,23 @@
         No final do ano ela terá: { num2 - num1}
       </div>
 
-    // Componente que recebe somente props genéricos
+    // Componente que recebe props 
     
-    const div1 = React.createElement('div', 
-    {className: 'texto', children: 'Nome Jociclei Sobrenome: Marilda'})
+    const Componente = ({nome, sobrenome, ...props}) =>
+    <>
+    <div className="texto" {...props}> Nome: {nome} {sobrenome}  </div>
+    </>
 
-    const div2 = React.createElement('div', 
-    {className: 'texto1', children: 'Ano de Nascimento: 1995 \n Nome mês: julho \n No dia: 23'})
-
+    const Componente1 = ({ano, mes, dia, ...props}) =>
+    <>
+    <div className="texto1" {...props}>Ano:{ano} / Mês:{mes} / Dia:{dia} </div>
+    </>
 
     const container =
     <>
+      <Componente nome="Jocicleide" sobrenome="Marilda"/>
+      <Componente1 ano={1995}mes={9}dia={23}/>
       <Soma id="soma1" num1={1995} title="Ano de nascimento" num2={2023} />
-      {div1}
-      {div2}
     </>
     
     const root = ReactDOM.createRoot(document.getElementById('root'))
