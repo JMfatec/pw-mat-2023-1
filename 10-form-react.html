@@ -7,14 +7,18 @@
     <title>Document</title>
 </head>
 <body>
+  
     <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <div id="root"></div>
 
   <script type="text/babel">
     
     function Form(){
+
+      let nome, maiusc
 
         function handleChange(event) {
             maiusc = document.getElementById('maiusc').checked
@@ -40,13 +44,13 @@
 
             <form onSubmit={handleSubmit}>
               <div>  
-                <label htmlfor="campo-nome">Nome</label> <br />
+                <label htmlFor="campo-nome">Nome</label> <br />
                 <input id="campo-nome" onChange={handleChange} />
               </div> 
               
               <div>
                 <input type="checkbox" id="maiusc" onClick={handleChange} />
-                <label htmlfor="maiusc">Colocar nome em maiusculo</label>  
+                <label htmlFor="maiusc">Colocar nome em maiúsculo</label>  
               </div>
 
               <div id="resultado"></div>
@@ -68,5 +72,6 @@
     const root = ReactDOM.createRoot(document.getElementById('root'))
     root.render(container)  
   </script>  
+  
 </body>
 </html>
