@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formulário HTML</h1>
+    <form>
+    <div>
+        <label for="campo-nome">Nome</label> <br>
+        <input id="campo-nome">
+    </div>
+
+    <div>
+        <input type="checkbox" id="maiusc"/>
+        <label for="maiusc">Colocar nome em maiuculo</label>
+    </div>
+
+    <div id ="resultado"></div>
+
+    <div>
+        <input type="submit" value="Enviar">
+    </div>
+    </form>
+
+    <script>
+        let nome, maiusc
+
+        function handleChange(event) {
+            maiusc = document.getElementById('maiusc').checked
+
+            if(maiusc){
+                nome = document.getElementById('campo-nome').value.toUpperCase()
+            }
+            else{
+                nome = document.getElementById('campo-nome').value
+            }
+
+            document.getElementById('resultado').textContent = nome
+        }
+
+        function handleSubmit(event){
+            event.preventDefault()
+            alert(`Olá, ${nome}!`)
+        }
+
+        document.getElementById('campo-nome').addEventListener('keyup', handleChange)
+
+        document.querySelector('form').addEventListener('submit', handleSubmit)
+
+        document.getElementById('maiusc').addEventListener('click', handleChange)
+    </script>
+</body>
+</html>
