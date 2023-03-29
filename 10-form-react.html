@@ -20,17 +20,22 @@
 
       let nome, maiusc
 
+      //Criando referência para elementos do componente com useRef()
+      const maiuscRef = React.useRef()
+      const nomeRef = React.useRef()
+      const resulradoRef = React.useRef()
+
         function handleChange(event) {
-            maiusc = document.getElementById('maiusc').checked
+            maiusc = maiuscRef.current.checked
 
             if(maiusc){
-                nome = document.getElementById('campo-nome').value.toUpperCase()
+                nome = nomeRef.current.value.toUpperCase()
             }
             else{
-                nome = document.getElementById('campo-nome').value
+                nome = nomeRef.current.value
             }
 
-            document.getElementById('resultado').textContent = nome
+            resulradoRef.current.textContent = nome
         }
 
         function handleSubmit(event){
@@ -44,16 +49,20 @@
 
             <form onSubmit={handleSubmit}>
               <div>  
-                <label htmlFor="campo-nome">Nome</label> <br />
-                <input id="campo-nome" onChange={handleChange} />
+                <label>
+                  <span>Nome</span> <br />    
+                <input ref={nomeRef} onChange={handleChange} />
+                </label>
               </div> 
               
               <div>
-                <input type="checkbox" id="maiusc" onClick={handleChange} />
-                <label htmlFor="maiusc">Colocar nome em maiúsculo</label>  
+                <label>
+                <input type="checkbox" ref={maiuscRef} onClick={handleChange} />
+                <span>Colocar nome em maiúsculo</span> 
+                </label> 
               </div>
 
-              <div id="resultado"></div>
+              <div ref={resulradoRef}></div>
 
               <div>
                  <input type="submit" value="Enviar" />

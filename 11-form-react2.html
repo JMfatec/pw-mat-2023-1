@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <div id="root"></div>
+
+  <script type="text/babel">
+
+    function Form(){
+
+        console.count('Atualizou')
+
+        ///let num1, num2
+
+        //Criando variáveis de estado
+        const [num1, setNum1] = React.useState('')
+        const [num2, setNum2] = React.useState('')
+
+
+        return (
+            <>
+            <h1>Soma dois números</h1>
+            <form>
+                <div>
+                    <label>
+                        <span>Primeiro número</span><br />
+                        {/* COMPONENTE CONTROLADO: ocorre quando o onChange do componente atualiza uma variável de estado, que depois
+                        é lida de volta na propriedade value. Chama-se controlado porque , nesse caso, 
+                        é o React quem está no controle da mudança do valor do componente*/}
+                        <input 
+                        type="number" 
+                        onChange={event => setNum1(event.target.value)}
+                        value={num1}
+                        />
+                    </label>    
+                </div>
+
+                <h1>Soma dois números</h1>
+            
+                <div>
+                    <label>
+                        <span>Segundo número</span><br />
+                        <input 
+                        type="number" 
+                        onChange={event => setNum2(event.target.value)}
+                        value={num2}
+                        />
+                    </label>    
+                </div>
+                <div>
+                    Soma: {Number(num1) + Number(num2)}
+                </div>    
+            </form>    
+            </>
+        )
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(<Form />)
+
+  </script>
+    
+    
+</body>
+</html>
