@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    /*
+      1) Crie um formulário e coloque nele um input numérico com o label "Valor em reais".
+      2) Coloque outro input numérico com o label "Cotação do dólar".
+      3) Coloque, também, uma div para exibir o resultado da conversão de moeda.
+      4) Crie e coloque hooks useRef nos três elementos criados.
+      5) Escreva uma única função handleChange para interceptar a mundança nos dois inputs
+         e atualizar variáveis quando o respectivo valor mudar.
+      6) Usando as variáveis que foram atualizadas em handleChange, exiba na div de resultado
+         o valor convertido.
+      7) Após testar e comprovar o funcionamento, tire uma cópia do arquivo e refaça o exercício,
+         com cada input tendo sua própria função onChange e usando variáveis de estado (useState)
+         para armazenar os valores quando os inputs foram alterados.
+      Este exercício contará para a nota de Participação e Assiduidade (PA).
+    */
+
+    function Form1(){
+let real ,dolar, resultado
+//Criando referência para elementos do componente com useRef()
+const dolarRef = React.useRef()
+const realRef = React.useRef()
+const resultadoRef = React.useRef()
+
+  function handleChange(event) {
+     real = dolarRef.current.value * 5.14
+     dolar  = realRef.current.value / 5.14
+
+     resultado = `Valor em Dolar: ${dolar.toFixed(2)} /\n Valor em Real: ${real.toFixed(2)}`
+     resultadoRef.current.textContent = resultado
+  }
+
+
+  return (
+    <>
+      <h1>Conversor Moeda</h1>
+
+      <form>
+        <div>  
+          <label>
+            <span>Valor em Real</span><br />    
+          <input type="number"  ref={realRef} onChange={handleChange} placeholder={0} />
+          </label>
+        </div> 
+        
+        <div>
+          <label><br />
+            <span>Cotação Dolar</span><br /> 
+            <input type="number"  ref={dolarRef} onChange={handleChange} placeholder={0} />
+          </label> 
+        </div>
+
+        <div ref={resultadoRef}/>
+
+      </form>
+    </>       
+  )
+}
+function Form2(){
+
+console.count('Atualizou')
+
+///let num1, num2
+
+//Criando variáveis de estado
+const [num1, setNum1] = React.useState('')
+const [num2, setNum2] = React.useState('')
+
+
+return (
+    <>
+    <h1>Conversor Moeda</h1>
+    <form>
+        <div>
+            <label>
+                <span>Valor em Real</span><br />
+                <input 
+                type="number" 
+                onChange={event => setNum1(event.target.value)}
+                value={num1}
+                placeholder={0}
+                />
+            </label>    
+         </div>
+        <div>
+            <label>
+                <span>Cotação Dolar</span><br />
+                <input 
+                type="number" 
+                onChange={event => setNum2(event.target.value)}
+                value={num2}
+                placeholder={0}
+                />
+            </label>    
+        </div>
+        <div>
+        Valor Moeda Dolar: {(num1*5.14).toFixed(2)}
+        <br />
+        Valor Moeda Reais: {(num2/5.14).toFixed(2)}
+        </div>    
+    </form>    
+    </>
+)
+}
+
+const container = 
+      <>
+         <Form1 />
+         <hr />
+         <Form2 />
+      </>
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(container)
+  </script>
+  
+</body>
+</html>
