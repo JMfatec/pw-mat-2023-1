@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Form(){
+
+        const ValReaisRef = React.useRef()
+        const cotDolarRef = React.useRef()
+        const resultadoRef = React.useRef()
+
+        let valReais, cotDolar
+
+        function handleChange(event) {
+            valReais = Number(ValReaisRef.current.value)
+            cotDolar = Number(cotDolarRef.current.value)
+
+            let convertido = valReais/cotDolar
+
+            const DolarFmt = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+
+            const RealFmt = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
+
+            resultadoRef.current.texContent = DolarFmt.format(convertido)
+
+        return (
+            <>
+              <h1> Conversor de real para dolar</h1>
+              <form>
+                <div>
+                 <label>
+                    <span>Valor em reais</span><br/>
+                    <input ref={ValReaisRef} onChange={handleChange} type ="number" />
+                 </label>
+                  </div>
+                  <div>
+                    <label>
+                        <span>Cotação do dolar</span><br/>
+                        <input ref={cotDolarRef} onChange={handleChange} type ="number" />
+                    </label>
+                     </div>
+              </form>      
+            </>
+            )
+        }
+    }
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(Form)
+</script>
+  
+</body>
+</html>

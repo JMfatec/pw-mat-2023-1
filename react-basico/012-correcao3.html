@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <div id="root"></div>
+
+  <script type="text/babel">
+ const DolarFmt = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+
+ const RealFmt = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
+
+    function Form(){
+
+        const setValReais = React.useState()
+        const setcotDolar = React.useState()
+
+        let valReais, cotDolar
+
+        return (
+            <>
+              <h1> Conversor de real para dolar</h1>
+              <form>
+                <div>
+                 <label>
+                    <span>Valor em reais</span><br/>
+                    <input  onChange={event => setValReais(Number(event.target.value))} value={valReais}  />
+                 </label>
+                  </div>
+                  <div>
+                    <label>
+                        <span>Cotação do dolar</span><br/>
+                        <input type ="number" onChange={event => setcotDolar(Number(event.target.value))} value={cotDolar}/>
+                    </label>
+                     </div>
+                     <div>
+                        {valorReais / cotDolar}.toLocalString('en-US',{style: 'currency', currency: 'USD'})
+                     </div>   
+
+              </form>      
+            </>
+        )
+    }
+    
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(Form)
+</script>
+  
+</body>
+</html>
