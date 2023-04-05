@@ -14,16 +14,26 @@
   <div id="root"></div>
 
   <script type="text/babel">
- const DolarFmt = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
 
- const RealFmt = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
+    /*
+      1) Crie um formulário e coloque nele um input numérico com o label "Valor em reais".
+      2) Coloque outro input numérico com o label "Cotação do dólar".
+      3) Coloque, também, uma div para exibir o resultado da conversão de moeda.
+      4) Crie e coloque hooks useRef nos três elementos criados.
+      5) Escreva uma única função handleChange para interceptar a mundança nos dois inputs
+         e atualizar variáveis quando o respectivo valor mudar.
+      6) Usando as variáveis que foram atualizadas em handleChange, exiba na div de resultado
+         o valor convertido.
+      7) Após testar e comprovar o funcionamento, tire uma cópia do arquivo e refaça o exercício,
+         com cada input tendo sua própria função onChange e usando variáveis de estado (useState)
+         para armazenar os valores quando os inputs foram alterados.
+      Este exercício contará para a nota de Participação e Assiduidade (PA).
+    */
 
     function Form(){
 
-        const setValReais = React.useState()
-        const setcotDolar = React.useState()
-
-        let valReais, cotDolar
+        const [valReais, setValReais] = React.useState('')
+        const [cotDolar, setCotDolar] = React.useState('')
 
         return (
             <>
@@ -32,26 +42,34 @@
                 <div>
                  <label>
                     <span>Valor em reais</span><br/>
-                    <input  onChange={event => setValReais(Number(event.target.value))} value={valReais}  />
+                    <input  
+                    type="number"
+                    onChange={event => setValReais(Number(event.target.value))} 
+                    value={valReais}  
+                    />
                  </label>
-                  </div>
+                 </div>
                   <div>
                     <label>
-                        <span>Cotação do dolar</span><br/>
-                        <input type ="number" onChange={event => setcotDolar(Number(event.target.value))} value={cotDolar}/>
+                        <span>Cotação do dólar</span><br/>
+                        <input 
+                        type ="number" 
+                        onChange={event => setCotDolar(Number(event.target.value))} 
+                        value={cotDolar}
+                        />
                     </label>
                      </div>
                      <div>
-                        {valorReais / cotDolar}.toLocalString('en-US',{style: 'currency', currency: 'USD'})
+                      {(valReais / cotDolar).toLocaleString('en-US', {style: 'currency', currency: 'USD'})}
                      </div>   
-
               </form>      
             </>
         )
     }
     
     const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(Form)
+    root.render(<Form />)
+
 </script>
   
 </body>

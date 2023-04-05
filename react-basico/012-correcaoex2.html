@@ -7,57 +7,80 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
   <div id="root"></div>
 
   <script type="text/babel">
+
+    /*
+      1) Crie um formulário e coloque nele um input numérico com o label "Valor em reais".
+      2) Coloque outro input numérico com o label "Cotação do dólar".
+      3) Coloque, também, uma div para exibir o resultado da conversão de moeda.
+      4) Crie e coloque hooks useRef nos três elementos criados.
+      5) Escreva uma única função handleChange para interceptar a mundança nos dois inputs
+         e atualizar variáveis quando o respectivo valor mudar.
+      6) Usando as variáveis que foram atualizadas em handleChange, exiba na div de resultado
+         o valor convertido.
+      7) Após testar e comprovar o funcionamento, tire uma cópia do arquivo e refaça o exercício,
+         com cada input tendo sua própria função onChange e usando variáveis de estado (useState)
+         para armazenar os valores quando os inputs foram alterados.
+      
+        Este exercício contará para a nota de Participação e Assiduidade (PA).
+    */
+   
+    const DolarFmt = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
+
+
+    const RealFmt = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
+
     function Form(){
 
-        const ValReaisRef = React.useRef()
+        const valReaisRef = React.useRef()
         const cotDolarRef = React.useRef()
         const resultadoRef = React.useRef()
 
         let valReais, cotDolar
 
         function handleChange(event) {
-            valReais = Number(ValReaisRef.current.value)
+            valReais = Number(valReaisRef.current.value)
             cotDolar = Number(cotDolarRef.current.value)
 
-            let convertido = valReais/cotDolar
+            let convertido = valReais / cotDolar
 
-            const DolarFmt = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'})
-
-            const RealFmt = new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'})
-
-            resultadoRef.current.texContent = DolarFmt.format(convertido)
+            resultadoRef.current.textContent = DolarFmt.format(convertido)
+          
+          }
 
         return (
             <>
               <h1> Conversor de real para dolar</h1>
-              <form>
+            <form>
                 <div>
                  <label>
                     <span>Valor em reais</span><br/>
-                    <input ref={ValReaisRef} onChange={handleChange} type ="number" />
+                    <input ref={valReaisRef} onChange={handleChange} type="number" />
                  </label>
-                  </div>
-                  <div>
+               </div>
+               <div>
                     <label>
                         <span>Cotação do dolar</span><br/>
-                        <input ref={cotDolarRef} onChange={handleChange} type ="number" />
+                        <input ref={cotDolarRef} onChange={handleChange} type="number" />
                     </label>
-                     </div>
-              </form>      
+                  </div>
+                  <div ref={resultadoRef}></div>
+            </form>      
             </>
-            )
-        }
+          )
     }
+    
     const root = ReactDOM.createRoot(document.getElementById('root'))
-    root.render(Form)
-</script>
+    root.render(<Form />)
+
+  </script>
   
 </body>
 </html>
