@@ -20,23 +20,46 @@
 
         const [peso, setPeso] = React.useState('')
         const [altura, setAltura] = React.useState('')
-        const [imc, setImc] = React.useState('')
-        const [faixa, setFaixa] = React.useState('')
+        //const [imc, setImc] = React.useState('')
+        //const [faixa, setFaixa] = React.useState('')
+
+        //estados calculados
+        let imc = calcImc()
+        let faixa = determinarFaixa()
+
+        function calcImc(event) {
+         return Number(peso)/Number(altura) **2
+        }
+
+        function determinarFaixa(){
+          if(imc < 18.5) setFaixa('Peso baixo')
+           else if(imc < 24.5) faixa('Peso normal')
+           else if(imc < 30) faixa('Sobrepeso')
+           else if(imc < 35) faixa('Obsidade (Grau I)')
+           else if(imc < 40) faixa('Obsidade severa (Grau II)')
+           else              faixa('Obsidade mórbida Grau III')
+
+        }
 
         function handleChange(event){
            if(event.target.name === 'peso') setPeso(event.target.value)
            else setAltura(event.target.value)
 
            // Cáculo do IMC
-           setImc(Number(peso) / Number(altura) ** 2)
-
+           //setImc(Number(peso) / Number(altura) ** 2)
+ 
+           //imc = Number(peso) / Number(altura) ** 2
+ 
            //Determinando a faixa de IMC
+           /*
            if(imc < 18.5) setFaixa('Peso baixo')
            else if(imc < 24.5) setFaixa('Peso normal')
            else if(imc < 30) setFaixa('Sobrepeso')
            else if(imc < 35) setFaixa('Obsidade (Grau I)')
            else if(imc < 40) setFaixa('Obsidade severa (Grau II)')
            else              setFaixa('Obsidade mórbida Grau III') 
+*/          
+           
 
 
         }
