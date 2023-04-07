@@ -14,6 +14,7 @@
   <div id="root"></div>
 
   <script type="text/babel">
+
     function Form(){
 
         console.count('ATUALIZOU O COMPONENTE')
@@ -32,12 +33,12 @@
         }
 
         function determinarFaixa(){
-          if(imc < 18.5) setFaixa('Peso baixo')
-           else if(imc < 24.5) faixa('Peso normal')
-           else if(imc < 30) faixa('Sobrepeso')
-           else if(imc < 35) faixa('Obsidade (Grau I)')
-           else if(imc < 40) faixa('Obsidade severa (Grau II)')
-           else              faixa('Obsidade mórbida Grau III')
+          if(imc < 18.5)       return('Peso baixo')
+           else if(imc < 24.5) return('Peso normal')
+           else if(imc < 30)   return('Sobrepeso')
+           else if(imc < 35)   return('Obsidade (Grau I)')
+           else if(imc < 40)   return('Obsidade severa (Grau II)')
+           else                return('Obsidade mórbida Grau III')
 
         }
 
