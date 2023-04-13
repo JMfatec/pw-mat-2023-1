@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .msg {
+            
+            background-color: khaki;
+            border-radius: 4px;
+            border: 2px solid red;
+            padding: 10px;
+            text-align: center;
+            font-family: Cambria, Arial, Sans;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+
+    //Função de componentes: props genéricas
+    const Mensagem = props => <div className = "msg" {...props} />
+
+    //Função de componente : props personalizadas
+    const Aviso = ({id, children}) => <div className="msg" id={id} children={children} />
+
+    const container =
+    <>
+     <Mensagem id="msg2" title="Primeira mensagem" children="Isto é uma mensagem" teste="Meu teste"> 
+        stoos 
+       </Mensagem>
+     <Mensagem id="msg1" title="Segunda mensagem" children="Isto é uma blabal" bloblo="bloblo">
+        Isto é outra mensagem lilu
+        </Mensagem>
+
+        <Aviso id="aviso1" title="Primeiro Aviso" legume="batata">
+            Aviso importante: não tem aula domingo
+        </Aviso>    
+    </>    
+
+    const root = ReactDOM.createRoot(document.getElementById('root'))
+    root.render(container)
+  </script>
+</body>
+</html>

@@ -35,11 +35,11 @@
 
     /*
       O estilo acima, em CSS puro, ficaria:
-       estilo1.{
-        backgroundColor: 'orange',
-        fontSize: '30px'
-        fontFamily: '"Courier New"', 'monospace',
-        border: '4px dotted blue'
+      .estilo1 {
+        background-color: orange;
+        font-size: 30px;
+        font-family: "Courier New", monospace;
+        border: 4px dotted blue;
     }
 
     Abaixo, um componente de caixa altamente personalizado. recebe tanto props personalizados (style e size) quanto props genéricas
@@ -55,8 +55,10 @@
 
     const container = 
     <>
-       {/*Usando o copmponente Boxitalic. No primeiro caso , não será especificado o valor da prop siza.
+       {/*Usando o componente Boxitalic. No primeiro caso , não será especificado o valor da prop size.
        Nesse caso será criado com size = small. */}
+       { /* A prop style sempre usará um par duplo de chaves {{}} */ }
+       
        <BoxItalic
          id="boxitalic1"
          style={{
