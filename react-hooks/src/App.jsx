@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route , Link} from 'react-router-dom'
 import Exercicio01 from './exercicios/01'
+import Exercicio02 from './exercicios/02'
 import './App.css'
+import Home from './pages/Home'
 
 function App() {
   
@@ -10,7 +12,7 @@ function App() {
      
      <BrowserRouter>
 
-     <ul>
+     <ul className='menu'>
       <li> <Link to="/01">Exercicíos 01</Link></li>
       <li> <Link to="/01">Exercicíos 02</Link></li>
       <li> <Link to="/01">Exercicíos 03</Link></li>
@@ -20,8 +22,9 @@ function App() {
       </ul>
       <hr/>
      <Routes>
+      <Route path='/' element={<Home/>}/>
      <Route path='/01' element={<Exercicio01 />}/>
-     <Route path='/02' />
+     <Route path='/02' element={<Exercicio02 />}/>
      <Route path='/03' />
      <Route path='/04' />
      <Route path='/05' />
