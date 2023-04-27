@@ -3,8 +3,22 @@ import * as React from 'react'
 function Board() {
   // 🐨 squares é o estado para este componente. Adicione useState para squares
   //const squares = Array(9).fill(null)
-  const [squares, selectSquares] = React.useState(Array(9).fill(null))
 
+  //Quando um componente for carregado verificamos se existe um estado salvo 
+  //e inicializamos a variável de estado com isso.
+  //Como o estado salvo é string e o nossa variável de estado é vetor.
+  // é necessário converter de um para o outro usando JSON.parse()
+  const [squares, selectSquares] = React.useState(
+    //Usa o estado gravado no localStrorage ,se houver, ou um vetor 
+    //de 9 nulos, caso contrário
+
+    //Fornencendo uma função em vez de valor, o React entenderá que 
+    //queremos executar a ação de inicialização do estado apenas durante
+    // a fase "mount" do cilclo de vida do componente, oque é chamado
+    // "lazy initializar"  
+    JSON.parse(window.localStorage.getItem('tic-tac-toe')) ?? Array(9).fill(null)
+    )
+  
   // 🐨 Precisaremos dos seguintes itens de estados derivados:
   // - nextValue ('X' ou 'O')
   // - winner ('X', 'O', ou null)
@@ -14,6 +28,12 @@ function Board() {
   const nextValue = calculateNextValue(squares)
   const winner = calculateWinner(squares)
   const status = calculateStatus(winner, squares, nextValue)
+
+    React.useEffect(() => {
+      // Como o estado "squares" é um vetro ,ele deve ser convertido em string comJSON.stringfy()
+      //antes de ser slavo no localStorage
+      window.localStorage.setItem('tic-tac-toe', JSON.stringify(squares))
+    }, [squares])
   // Esta é a função que o manipulador de clique no quadrado irá chamar. `square`
   // deve ser um índice. Portanto, se você clicar sobre o quadrado central, o
   // valor será `4`.
@@ -77,11 +97,11 @@ function Board() {
         restart
       </button>
       <hr />
-      <div>{ JSON.stringify(squares) }</div>
+      
     </div>
   )
 }
-
+//<div>{ JSON.stringify(squares) }</div>
 function Game() {
   return (
     <div className="game">
