@@ -19,7 +19,7 @@ function Tilt({children}) {
     // durante a fase "unmount" (descarregamento) da página
     return () => {
       alert('Descarregando...')
-      tiltNode.VanillaTilt.destroy()
+      tiltNode.vanillaTilt.destroy()
     }
   }, [])
 
