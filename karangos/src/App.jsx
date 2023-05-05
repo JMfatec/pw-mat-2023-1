@@ -4,7 +4,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom'
 import TopBar from './components/ui/TopBar'
-import './App.css'
+//import './App.css'
 
 function App() {
   

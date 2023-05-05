@@ -20,7 +20,7 @@ function PokemonInfo({pokemonName}) {
   })
 
   //Criando 
-  const [pokemon , error, status] = state
+  const {pokemon , error, status} = state
   
   // 🐨 crie React.useEffect de modo a ser chamado sempre que pokemonName mudar.
   // 💰 NÃO SE ESQUEÇA DO VETOR DE DEPENDÊNCIAS!
@@ -76,25 +76,22 @@ function PokemonInfo({pokemonName}) {
       return 'Informe um Pokemon'
 
       case 'pending':
-      return <PokemonInfoFallback name={pokemonName} />
+        return <PokemonInfoFallback name={pokemonName} />
 
       case 'resolved':
         return <PokemonDataView pokemon={pokemon} />
-  }
-/*  
-if(error) return(
-  <div role='alert'>
-        Houve um erro:
-        <pre style={{whiteSpace: 'normal'}}>
-          {error.message}
-        </pre>
-      </div>
-)
 
- else if(! pokemonName) return 'Iforme um pokemon'
- else if(pokemonName && !pokemon) return <PokemonInfoFallback name={pokemonName} />
- else if(pokemon) return <PokemonDataView pokemon={pokemon}/>
-  */
+      default: // rejected 
+        return(
+            <div role='alert'>
+              Houve um erro:
+              <pre style={{whiteSpace: 'normal'}}>
+                {error.message}
+              </pre>
+            </div>
+      )
+  }
+
 }
 
 function Exercicio06() {
@@ -111,7 +108,6 @@ function Exercicio06() {
       <div className="pokemon-info">
         <PokemonInfo pokemonName={pokemonName} />
       </div>
-      
     </div>
   )
 }
