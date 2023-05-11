@@ -8,6 +8,8 @@ import theme from './utils/theme'
 import { ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box'
 import FooterBar from './components/ui/FooterBar';
+import Homepage from './pages/Homepage';
+import CssBaseline  from '@mui/material/CssBaseline';
 //import './App.css'
 
 function App() {
@@ -16,12 +18,22 @@ function App() {
     <>
      <BrowserRouter>
      <ThemeProvider theme={theme}>
+      <CssBaseline />
        <Box sx={{ 
         width: '100vw' , 
-        height: '100vh', 
+        minheight: '100vh', 
         backgroundColor: 'background.default'
       }}>
        <TopBar />
+       <Box sx={{
+          margin: '25px 25px 55px 25px',
+          //backgroundColor: 'blue'
+       }}>
+          
+          <Routes>
+             <Route path='/' element={ <Homepage /> } />
+          </Routes>
+       </Box>
        <FooterBar />
        </Box>
      </ThemeProvider>
