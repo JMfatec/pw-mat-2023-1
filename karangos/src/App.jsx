@@ -10,6 +10,8 @@ import Box from '@mui/material/Box'
 import FooterBar from './components/ui/FooterBar';
 import Homepage from './pages/Homepage';
 import CssBaseline  from '@mui/material/CssBaseline';
+import CustomersList from './pages/CustomersList';
+
 //import './App.css'
 
 function App() {
@@ -33,6 +35,11 @@ function App() {
           <Routes>
              <Route path='/' element={ <Homepage /> } />
           </Routes>
+
+          <Routes>
+             <Route path='/customers' element={ <CustomersList /> } />
+          </Routes>
+
        </Box>
        <FooterBar />
        </Box>
