@@ -11,6 +11,8 @@ import FooterBar from './components/ui/FooterBar';
 import Homepage from './pages/Homepage';
 import CssBaseline  from '@mui/material/CssBaseline';
 import CustomersList from './pages/CustomersList';
+import CustomersForm from './pages/CustomersForm';
+import './App.css'
 
 //import './App.css'
 
@@ -33,11 +35,10 @@ function App() {
        }}>
           
           <Routes>
-             <Route path='/' element={ <Homepage /> } />
-          </Routes>
-
-          <Routes>
-             <Route path='/customers' element={ <CustomersList /> } />
+             <Route path='/' element={ <Homepage /> } />                   
+             <Route path='/customers' element={ <CustomersList /> } />        
+             <Route path='/customers/new' element={ <CustomersForm /> } />
+             <Route path='/customers/:id' element={ <CustomersForm /> } />
           </Routes>
 
        </Box>
