@@ -12,6 +12,8 @@ import Homepage from './pages/Homepage';
 import CssBaseline  from '@mui/material/CssBaseline';
 import CustomersList from './pages/CustomersList';
 import CustomersForm from './pages/CustomersForm';
+import CarsForm from './pages/CarsForm';
+import CarsList from './pages/CarsList';
 import './App.css'
 
 //import './App.css'
@@ -39,6 +41,8 @@ function App() {
              <Route path='/customers' element={ <CustomersList /> } />        
              <Route path='/customers/new' element={ <CustomersForm /> } />
              <Route path='/customers/:id' element={ <CustomersForm /> } />
+             <Route path='/cars' element={ <CarsList /> } />
+             <Route path='/cars/new' element={ <CarsForm /> } />
           </Routes>
 
        </Box>
