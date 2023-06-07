@@ -21,12 +21,23 @@ export default function CarsList() {
   const {
     cars
   } = state
+/*
+   Acima neste trecho, o componente CarsList é definido como uma função. 
+   Ele utiliza o hook useState para criar uma variável de estado chamada state, 
+   que contém um objeto vazio inicialmente. 
+   A desestruturação é usada para obter a variável cars do estado.
+*/
 
   // Este useEffect() será executado apenas uma vez, durante o
   // carregamento da página
   React.useEffect(() => {
     loadData()    // Carrega dos dados do back-end
   }, [])
+/*
+  Acima temos um hook useEffect que será executado apenas uma vez, 
+  quando o componente for montado, ele chama a função loadData, 
+  responsável por carregar os dados do backend.
+*/
 
   async function loadData() {
     try {
@@ -44,6 +55,14 @@ export default function CarsList() {
       console.error(error)
     }
   }
+/*
+   A função loadData é assíncrona e realiza uma requisição HTTP 
+   para a API 'https:api.faustocintra.com.br/cars'
+   se a resposta for bem-sucedida, 
+   os dados são atualizados no estado utilizando setState. 
+   Caso contrário, é lançado um erro.
+*/
+
   // Definição das colunas da tabela de carros
   const columns = [
     { field: 'id', 
@@ -132,11 +151,18 @@ export default function CarsList() {
 
     },
   ];
+/*
+  Acima é definido um array de objetos chamado columns, 
+  que representa as colunas da tabela. 
+  Cada objeto no array representa uma coluna e possui propriedades como field (campo), 
+  headerName (nome do cabeçalho), width (largura).
+*/
+
   // Função para lidar com o clique no botão de excluir
   async function handleDeleteButtonClick(id) {
     if(confirm('Deseja realmente excluir este item?')) {
       try {
-        // Faz a chamada ao back-end para excluir o cliente
+        // Faz a chamada ao back-end para excluir o carro
         const result = await fetch(`https://api.faustocintra.com.br/cars/${id}`, {
           method: 'DELETE'
         })
@@ -149,7 +175,13 @@ export default function CarsList() {
       }
     }
   }
-  
+ /*
+   A função handleDeleteButtonClick é chamada quando o botão de exclusão é clicado. 
+   Ela exibe uma caixa de diálogo de confirmação e, 
+   se confirmada, faz uma chamada ao backend para excluir o item correspondente ao id fornecido. 
+   Se a exclusão for bem-sucedida,a lista é atualizada e exibe um alerta de sucesso.
+ */
+
   return (
     <>
       <Typography variant="h1" sx={{ mb: '50px' }}>
@@ -194,3 +226,20 @@ export default function CarsList() {
     </>
   )
 }
+/*
+No final, o componente retorna uma estrutura JSX 
+que representa a UI(user interface) essa estrutura contém elementos como:
+
+<Typography> que permite exibir texto com estilos e variantes predefinidos. 
+No código, ele é usado para exibir um título na página de listagem de carros.
+
+<Box> que permite agrupar elementos e definir propriedades de espaçamento, alinhamento e estilo. 
+No código, é usado para envolver o botão de cadastrar novo carro e aplicar estilos de margem.
+
+<Button> representa um botão, ele pode ser personalizado com diferentes cores e ícones. 
+No código, é usado para criar o botão de cadastrar novo carro na página.
+
+<Link> é um componente do React Router que permite criar links para outras páginas da aplicação. 
+No código, é usado para criar um link para a página 
+de cadastro de novo carro quando o botão correspondente é clicado.
+*/
