@@ -64,6 +64,14 @@ export default function MainMenu() {
           Carros
         </MenuItem>
 
+        <MenuItem 
+          onClick={handleClose}
+          component={Link}
+          to="/card"
+        >
+          Autor
+        </MenuItem>
+
 
       </Menu>
     </div>

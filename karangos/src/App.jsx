@@ -14,6 +14,7 @@ import CustomersList from './pages/CustomersList';
 import CustomersForm from './pages/CustomersForm';
 import CarsForm from './pages/CarsForm';
 import CarsList from './pages/CarsList';
+import CardForm from './pages/CardForm';
 import './App.css'
 
 //import './App.css'
@@ -43,6 +44,7 @@ function App() {
              <Route path='/customers/:id' element={ <CustomersForm /> } />
              <Route path='/cars' element={ <CarsList /> } />
              <Route path='/cars/new' element={ <CarsForm /> } />
+             <Route path='/card' element={ <CardForm /> } />
           </Routes>
 
        </Box>
